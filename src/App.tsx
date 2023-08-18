@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from 'react'
+import { useRoutes } from 'react-router-dom'
+import { Button } from 'antd'
+
+import routes from './router'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+
+// import { IRootState } from './store'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Suspense fallback="">
+        <div className="main">{useRoutes(routes)}</div>
+      </Suspense>
+      <Button type="primary">Button</Button>
+      <Footer />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
