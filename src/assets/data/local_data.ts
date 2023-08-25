@@ -65,7 +65,7 @@ export const discoverMenu = [
 ]
 
 // 热门主播
-export const hotRadios = [
+export const hotAnchor = [
   {
     picUrl:
       'http://p1.music.126.net/H3QxWdf0eUiwmhJvA4vrMQ==/1407374893913311.jpg',

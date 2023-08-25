@@ -91,40 +91,40 @@ export const RankItemWrapper = styled.div`
             text-decoration: underline;
           }
         }
+
+        .operate {
+          display: flex;
+          align-items: center;
+          display: none;
+          width: 82px;
+
+          .btn {
+            width: 17px;
+            height: 17px;
+            margin-left: 8px;
+            cursor: pointer;
+          }
+
+          .play {
+            background-position: -267px -268px;
+          }
+
+          .addto {
+            position: relative;
+            top: 2px;
+            background-position: 0 -700px;
+          }
+
+          .favor {
+            background-position: -297px -268px;
+          }
+        }
       }
 
-      .oprate {
-        display: flex;
-        align-items: center;
-        display: none;
-        width: 82px;
-
-        .btn {
-          width: 17px;
-          height: 17px;
-          margin-left: 8px;
-          cursor: pointer;
+      &:hover {
+        .operate {
+          display: block;
         }
-
-        .play {
-          background-position: -267px -268px;
-        }
-
-        .addto {
-          position: relative;
-          top: 2px;
-          background-position: 0 -700px;
-        }
-
-        .favor {
-          background-position: -297px -268px;
-        }
-      }
-    }
-
-    &:hover {
-      .oprate {
-        display: block;
       }
     }
   }

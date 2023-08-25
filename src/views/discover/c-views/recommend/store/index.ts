@@ -4,6 +4,7 @@ import {
   getHotRecommend,
   getNewAlbum,
   getPlaylist,
+  getArtistList,
 } from '../service/recommend'
 
 export const fetchRecommedInfo = createAsyncThunk(
@@ -14,6 +15,9 @@ export const fetchRecommedInfo = createAsyncThunk(
       dispatch(changeHotRecommendAction(res.result)),
     )
     getNewAlbum().then((res) => dispatch(changeNewAlbumAction(res.albums)))
+    getArtistList(5).then((res) =>
+      dispatch(changeSettleSingerAction(res.artists)),
+    )
   },
 )
 
@@ -26,7 +30,10 @@ export const fetchRankAction = createAsyncThunk(
       promises.push(getPlaylist(id))
     }
     Promise.all(promises).then((res) => {
-      dispatch(changeRankAction(res.map((item) => item.playlist)))
+      const playlists = res
+        .filter((item) => item.playlist)
+        .map((item) => item.playlist)
+      dispatch(changeRankAction(playlists))
     })
   },
 )
@@ -36,12 +43,14 @@ interface IRecommendState {
   hotRecommend: any[]
   newAlbum: any[]
   rank: any[]
+  settleSinger: any[]
 }
 const initialState: IRecommendState = {
   banners: [],
   hotRecommend: [],
   newAlbum: [],
   rank: [],
+  settleSinger: [],
 }
 const recommendSlice = createSlice({
   name: 'recommend',
@@ -59,6 +68,9 @@ const recommendSlice = createSlice({
     changeRankAction(state, { payload }) {
       state.rank = payload
     },
+    changeSettleSingerAction(state, { payload }) {
+      state.settleSinger = payload
+    },
   },
 
   // extraReducers: (builder) => {
@@ -73,5 +85,6 @@ export const {
   changeHotRecommendAction,
   changeNewAlbumAction,
   changeRankAction,
+  changeSettleSingerAction,
 } = recommendSlice.actions
 export default recommendSlice.reducer

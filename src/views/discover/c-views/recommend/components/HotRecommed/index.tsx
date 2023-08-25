@@ -26,9 +26,10 @@ const HotRecommend: FC<IProps> = () => {
         moreLink="/discover/songs"
       />
       <div className="hot-recommend">
-        {hotRecommend.map((item) => {
-          return <SongsItem key={item.id} itemData={item} />
-        })}
+        {hotRecommend.length &&
+          hotRecommend.map((item) => {
+            return <SongsItem key={item.id} itemData={item} />
+          })}
       </div>
       HotRecommend
     </HotRecommedWrapper>

@@ -47,28 +47,30 @@ const Swiper: FC<IProps> = () => {
             afterChange={handleAfterChange}
             ref={ref}
           >
-            {banners.map((banner) => {
-              return (
-                <div className="banner-item" key={banner.imageUrl}>
-                  <img
-                    className="image"
-                    src={banner.imageUrl}
-                    alt={banner.typeTitle}
-                  />
-                </div>
-              )
-            })}
+            {banners.length &&
+              banners.map((banner) => {
+                return (
+                  <div className="banner-item" key={banner.imageUrl}>
+                    <img
+                      className="image"
+                      src={banner.imageUrl}
+                      alt={banner.typeTitle}
+                    />
+                  </div>
+                )
+              })}
           </Carousel>
           <ul className="dots">
-            {banners.map((item, index) => {
-              return (
-                <li key={item.imageUrl}>
-                  <span
-                    className={cn('item', { active: index === currentIdx })}
-                  ></span>
-                </li>
-              )
-            })}
+            {banners.length &&
+              banners.map((item, index) => {
+                return (
+                  <li key={item.imageUrl}>
+                    <span
+                      className={cn('item', { active: index === currentIdx })}
+                    ></span>
+                  </li>
+                )
+              })}
           </ul>
         </SwiperLeft>
         <SwiperRight></SwiperRight>

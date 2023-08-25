@@ -1,13 +1,13 @@
-import hyRequest from '@/service'
+import request from '@/service'
 
 export function getBanner() {
-  return hyRequest.get({
+  return request.get({
     url: '/banner',
   })
 }
 
 export function getHotRecommend(limit = 30) {
-  return hyRequest.get({
+  return request.get({
     url: '/personalized',
     params: {
       limit,
@@ -16,16 +16,25 @@ export function getHotRecommend(limit = 30) {
 }
 
 export function getNewAlbum() {
-  return hyRequest.get({
+  return request.get({
     url: '/album/newest',
   })
 }
 
 export function getPlaylist(id: number) {
-  return hyRequest.get({
+  return request.get({
     url: '/playlist/detail',
     params: {
       id,
+    },
+  })
+}
+
+export function getArtistList(limit = 30) {
+  return request.get({
+    url: 'artist/list',
+    params: {
+      limit,
     },
   })
 }

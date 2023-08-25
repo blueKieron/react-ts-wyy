@@ -3,7 +3,7 @@ import type { FC, ReactNode } from 'react'
 
 import SectionHeader from '@/components/SectionHeader'
 import { RankWrapper } from './style'
-import { useAppSelector } from '@/store'
+import { shallowEqualApp, useAppSelector } from '@/store'
 
 import RankItem from './components/RankItem'
 
@@ -12,9 +12,12 @@ interface IProps {
 }
 
 const Rank: FC<IProps> = () => {
-  const { rank } = useAppSelector((state) => ({
-    rank: state.recommend.rank,
-  }))
+  const { rank = [] } = useAppSelector(
+    (state) => ({
+      rank: state.recommend.rank,
+    }),
+    shallowEqualApp,
+  )
 
   return (
     <RankWrapper>

@@ -8,6 +8,9 @@ import Swiper from './components/Swiper'
 import HotRecommend from './components/HotRecommed'
 import NewAlbum from './components/NewAlbum'
 import Rank from './components/Rank'
+import UserLogin from './components/UserLogin'
+import SettleSinger from './components/SettleSinger'
+import HotAnchor from './components/HotAnchor'
 import { RecommendWrapper } from './style'
 
 interface IProps {
@@ -30,7 +33,11 @@ const Recommend: FC<IProps> = () => {
           <NewAlbum />
           <Rank />
         </div>
-        <div className="right"></div>
+        <div className="right">
+          <UserLogin />
+          <SettleSinger />
+          <HotAnchor />
+        </div>
       </div>
     </RecommendWrapper>
   )
